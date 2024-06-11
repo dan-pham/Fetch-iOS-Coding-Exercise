@@ -11,7 +11,7 @@ import SwiftUI
 struct Fetch_Coding_ExerciseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MealsListView()
         }
     }
 }
