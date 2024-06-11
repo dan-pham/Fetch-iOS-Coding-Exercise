@@ -10,5 +10,20 @@ import Observation
 
 @Observable
 final class MealsListViewModel {
-    private(set) var meals: [String] = ["Meal 1", "Meal 2", "Meal 3"]
+    private(set) var meals: [Meal] = []
+    private(set) var errorMessage = ""
+    
+    private let url = URL(string: NetworkManager.TheMealDBEndpoints.dessertCategory.rawValue)
+    
+    func loadMealsData() async {
+        NetworkManager.shared.loadMealData(from: url) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.meals = response.meals
+                
+            case .failure(let error):
+                self?.errorMessage = error.localizedDescription
+            }
+        }
+    }
 }

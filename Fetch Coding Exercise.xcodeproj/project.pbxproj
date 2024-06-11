@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C35580182C191080008F3B31 /* MealListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35580172C191080008F3B31 /* MealListCellView.swift */; };
 		C355801A2C191558008F3B31 /* MealsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35580192C191558008F3B31 /* MealsListViewModel.swift */; };
+		C355801C2C191734008F3B31 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355801B2C191734008F3B31 /* Meal.swift */; };
+		C355801E2C1917F6008F3B31 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355801D2C1917F6008F3B31 /* NetworkManager.swift */; };
 		C3B7B1BE2C19069C0031AAF0 /* Fetch_Coding_ExerciseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7B1BD2C19069C0031AAF0 /* Fetch_Coding_ExerciseApp.swift */; };
 		C3B7B1C02C19069C0031AAF0 /* MealsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7B1BF2C19069C0031AAF0 /* MealsListView.swift */; };
 		C3B7B1C22C1906A00031AAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3B7B1C12C1906A00031AAF0 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* Begin PBXFileReference section */
 		C35580172C191080008F3B31 /* MealListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListCellView.swift; sourceTree = "<group>"; };
 		C35580192C191558008F3B31 /* MealsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsListViewModel.swift; sourceTree = "<group>"; };
+		C355801B2C191734008F3B31 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		C355801D2C1917F6008F3B31 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C3B7B1BA2C19069C0031AAF0 /* Fetch Coding Exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fetch Coding Exercise.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B7B1BD2C19069C0031AAF0 /* Fetch_Coding_ExerciseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_ExerciseApp.swift; sourceTree = "<group>"; };
 		C3B7B1BF2C19069C0031AAF0 /* MealsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsListView.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 				C3B7B1BF2C19069C0031AAF0 /* MealsListView.swift */,
 				C35580172C191080008F3B31 /* MealListCellView.swift */,
 				C35580192C191558008F3B31 /* MealsListViewModel.swift */,
+				C355801B2C191734008F3B31 /* Meal.swift */,
+				C355801D2C1917F6008F3B31 /* NetworkManager.swift */,
 				C3B7B1C12C1906A00031AAF0 /* Assets.xcassets */,
 				C3B7B1C32C1906A00031AAF0 /* Preview Content */,
 			);
@@ -143,6 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C355801E2C1917F6008F3B31 /* NetworkManager.swift in Sources */,
+				C355801C2C191734008F3B31 /* Meal.swift in Sources */,
 				C35580182C191080008F3B31 /* MealListCellView.swift in Sources */,
 				C355801A2C191558008F3B31 /* MealsListViewModel.swift in Sources */,
 				C3B7B1C02C19069C0031AAF0 /* MealsListView.swift in Sources */,
