@@ -14,18 +14,10 @@ struct MealsListView: View {
     var body: some View {
         NavigationStack {
             List(meals, id: \.self) { meal in
-                VStack {
-                    HStack(spacing: 16) {
-                        Color.secondary
-                            .frame(width: 64, height: 64)
-                            .cornerRadius(12)
-                        
-                        Text(meal)
-                            .fontWeight(.bold)
-                    }
-                }
-                .padding(12)
+                MealListCellView(meal: meal)
+                    .listRowSeparator(.hidden)
             }
+            .scrollContentBackground(.hidden)
             .navigationTitle("Desserts")
         }
     }
