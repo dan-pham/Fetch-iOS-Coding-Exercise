@@ -9,11 +9,11 @@ import SwiftUI
 
 struct MealsListView: View {
     
-    let meals: [String] = ["Meal 1", "Meal 2", "Meal 3"]
+    @State private var viewModel = MealsListViewModel()
     
     var body: some View {
         NavigationStack {
-            List(meals, id: \.self) { meal in
+            List(viewModel.meals, id: \.self) { meal in
                 MealListCellView(meal: meal)
                     .listRowSeparator(.hidden)
             }
