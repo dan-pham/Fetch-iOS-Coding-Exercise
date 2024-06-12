@@ -19,7 +19,7 @@ final class MealsListViewModel {
         NetworkManager.shared.loadMealData(from: url) { [weak self] result in
             switch result {
             case .success(let response):
-                self?.meals = response.meals
+                self?.meals = response.meals.sorted()
                 
             case .failure(let error):
                 self?.errorMessage = error.localizedDescription

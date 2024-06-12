@@ -24,3 +24,9 @@ extension Meal: Decodable {
         case thumbnailURL = "strMealThumb"
     }
 }
+
+extension Meal: Comparable {
+    static func < (lhs: Meal, rhs: Meal) -> Bool {
+        lhs.title < rhs.title
+    }
+}
