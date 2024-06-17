@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MealListCellView: View {
     
-    let meal: String
+    let meal: Meal
     
     var body: some View {
         HStack(spacing: 16) {
@@ -17,7 +17,7 @@ struct MealListCellView: View {
                 .frame(width: 64, height: 64)
                 .cornerRadius(12)
             
-            Text(meal)
+            Text(meal.title)
                 .fontWeight(.bold)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -29,5 +29,5 @@ struct MealListCellView: View {
 }
 
 #Preview {
-    MealListCellView(meal: "Meal 1")
+    MealListCellView(meal: Meal(id: "123", title: "Apple Pie", thumbnailURL: ""))
 }

@@ -13,12 +13,15 @@ struct MealsListView: View {
     
     var body: some View {
         NavigationStack {
-            List(viewModel.meals, id: \.self) { meal in
+            List(viewModel.meals) { meal in
                 MealListCellView(meal: meal)
                     .listRowSeparator(.hidden)
             }
             .scrollContentBackground(.hidden)
             .navigationTitle("Desserts")
+        }
+        .task {
+            await viewModel.loadMealsData()
         }
     }
 }
