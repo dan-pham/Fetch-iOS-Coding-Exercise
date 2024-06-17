@@ -91,6 +91,82 @@ final class NetworkTests: XCTestCase {
         waitForExpectations(timeout: 1)
     }
     
+    func test_onLoad_successLoadingMealDetail() {
+        let expectation = self.expectation(description: "Loading meal detail")
+        
+        let mockData = """
+                    {
+                        "meals": [
+                            {
+                                "idMeal": "52855",
+                                "strMeal": "Banana Pancakes",
+                                "strCategory": "Dessert",
+                                "strArea": "American",
+                                "strInstructions": "In a bowl, mash the banana with a fork until it resembles a thick purée. Stir in the eggs, baking powder and vanilla.\\r\\nHeat a large non-stick frying pan or pancake pan over a medium heat and brush with half the oil. Using half the batter, spoon two pancakes into the pan, cook for 1-2 mins each side, then tip onto a plate. Repeat the process with the remaining oil and batter. Top the pancakes with the pecans and raspberries.",
+                                "strMealThumb": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg",
+                                "strIngredient1": "Banana",
+                                "strIngredient2": "Eggs",
+                                "strIngredient3": "Baking Powder",
+                                "strIngredient4": "Vanilla Extract",
+                                "strIngredient5": "Oil",
+                                "strMeasure1": "1 large",
+                                "strMeasure2": "2 medium",
+                                "strMeasure3": "pinch",
+                                "strMeasure4": "spinkling",
+                                "strMeasure5": "1 tsp"
+                            }
+                        ]
+                    }
+                    """.data(using: .utf8)!
+        
+        let url = URL(string: NetworkManager.TheMealDBEndpoints.fetchMealDetail.rawValue + "52855")!
+        let mockResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+        MockURLProtocol.mockResponses[url] = (data: mockData, response: mockResponse, error: nil)
+        
+        networkManager.loadMealData(from: url, session: mockSession) { (result: Result<MealsDetail, Error>) in
+            switch result {
+            case .success(let data):
+                XCTAssertEqual(data.meals.count, 1)
+                let mealDetail = data.meals.first
+                XCTAssertEqual(mealDetail?.id, "52855")
+                XCTAssertEqual(mealDetail?.title, "Banana Pancakes")
+                XCTAssertEqual(mealDetail?.category, "Dessert")
+                XCTAssertEqual(mealDetail?.area, "American")
+                XCTAssertEqual(mealDetail?.instructions, "In a bowl, mash the banana with a fork until it resembles a thick purée. Stir in the eggs, baking powder and vanilla.\r\nHeat a large non-stick frying pan or pancake pan over a medium heat and brush with half the oil. Using half the batter, spoon two pancakes into the pan, cook for 1-2 mins each side, then tip onto a plate. Repeat the process with the remaining oil and batter. Top the pancakes with the pecans and raspberries.")
+                XCTAssertEqual(mealDetail?.thumbnailURL, "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg")
+                XCTAssertEqual(mealDetail?.ingredients, ["• 1 large banana", "• 2 medium eggs", "• pinch baking powder", "• spinkling vanilla extract", "• 1 tsp oil"])
+                
+            case .failure(let error):
+                XCTFail("Unexpected error: \(error)")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1)
+    }
+    
+    func test_onLoad_failLoadingMealDetail() {
+            let expectation = self.expectation(description: "Loading meal detail with error")
+            
+            let url = URL(string: NetworkManager.TheMealDBEndpoints.fetchMealDetail.rawValue + "52855")!
+            MockURLProtocol.mockResponses[url] = (data: nil, response: nil, error: URLError(.notConnectedToInternet))
+            
+            networkManager.loadMealData(from: url, session: mockSession) { (result: Result<MealsDetail, Error>) in
+                switch result {
+                case .success:
+                    XCTFail("Expected failure, but got success")
+                    
+                case .failure(let error):
+                    XCTAssertNotNil(error)
+                }
+                
+                expectation.fulfill()
+            }
+            
+            waitForExpectations(timeout: 1)
+        }
+    
     func test_onLoad_failWithInvalidURL() {
         let expectation = self.expectation(description: "Invalid URL")
         
