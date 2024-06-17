@@ -9,67 +9,75 @@ import SwiftUI
 
 struct MealDetailView: View {
     
-    let title = "Meal Title"
-    let description = "Meal description Meal description Meal description Meal description Meal description Meal description"
-    let ingredients: [String] = ["Apples", "Bananas", "Flour", "Water"]
-    let instructions: String? = "Instructions instructions"
+    @State private var viewModel = MealDetailViewModel()
+    
+    let mealID: String
+    
+    init(mealID: String) {
+        self.mealID = mealID
+    }
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
-                Color.gray
-                    .frame(height: 300)
-                
+            if let meal = viewModel.meal {
                 VStack(alignment: .leading) {
-                    Text(title)
-                        .font(.title)
-                        .fontWeight(.bold)
+                    Color.gray
+                        .frame(height: 300)
                     
-                    Text(description)
-                        .font(.headline)
-                }
-                .padding()
-                
-                VStack(alignment: .leading) {
-                    HStack(alignment: .center) {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.mint)
+                    VStack(alignment: .leading) {
+                        Text(meal.title)
+                            .font(.title)
+                            .fontWeight(.bold)
                         
-                        Text("Ingredients")
-                            .bold()
+                        Text(meal.category ?? "Miscellaneous")
+                            .font(.headline)
                     }
-                    .font(.title3)
-                    .padding(.bottom, 8)
+                    .padding()
                     
-                    ForEach(ingredients, id: \.self) { ingredient in
-                        Text(ingredient)
-                    }
-                }
-                .padding()
-                
-                if let instructions = instructions {
                     VStack(alignment: .leading) {
                         HStack(alignment: .center) {
-                            Image(systemName: "list.clipboard.fill")
+                            Image(systemName: "checkmark.circle.fill")
                                 .foregroundStyle(.mint)
                             
-                            Text("Instructions")
+                            Text("Ingredients")
                                 .bold()
                         }
                         .font(.title3)
                         .padding(.bottom, 8)
                         
-                        Text(instructions)
+                        ForEach(meal.ingredients, id: \.self) { ingredient in
+                            Text(ingredient)
+                        }
                     }
                     .padding()
+                    
+                    if let instructions = meal.instructions {
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .center) {
+                                Image(systemName: "list.clipboard.fill")
+                                    .foregroundStyle(.mint)
+                                
+                                Text("Instructions")
+                                    .bold()
+                            }
+                            .font(.title3)
+                            .padding(.bottom, 8)
+                            
+                            Text(instructions)
+                        }
+                        .padding()
+                    }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .navigationBarTitleDisplayMode(.inline)
+        .task {
+            await viewModel.loadMealDetailData(for: mealID)
+        }
     }
 }
 
 #Preview {
-    MealDetailView()
+    MealDetailView(mealID: "52855")
 }
