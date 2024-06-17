@@ -14,8 +14,12 @@ struct MealsListView: View {
     var body: some View {
         NavigationStack {
             List(viewModel.meals) { meal in
-                MealListCellView(meal: meal)
-                    .listRowSeparator(.hidden)
+                NavigationLink {
+                    MealDetailView(mealID: meal.id)
+                } label: {
+                    MealListCellView(meal: meal)
+                }
+                .listRowSeparator(.hidden)
             }
             .scrollContentBackground(.hidden)
             .navigationTitle("Desserts")
