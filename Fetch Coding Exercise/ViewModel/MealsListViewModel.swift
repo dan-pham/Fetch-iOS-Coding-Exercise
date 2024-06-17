@@ -16,7 +16,7 @@ final class MealsListViewModel {
     private let url = URL(string: NetworkManager.TheMealDBEndpoints.dessertCategory.rawValue)
     
     func loadMealsData() async {
-        NetworkManager.shared.loadMealData(from: url) { [weak self] result in
+        NetworkManager.shared.loadMealData(from: url) { [weak self] (result: Result<Meals, Error>) in
             switch result {
             case .success(let response):
                 self?.meals = response.meals.sorted()

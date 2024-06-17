@@ -16,7 +16,7 @@ final class MealDetailViewModel {
     func loadMealDetailData(for id: String) async {
         let url = URL(string: NetworkManager.TheMealDBEndpoints.fetchMealDetail.rawValue + id)
         
-        NetworkManager.shared.loadMealDetails(from: url) { [weak self] (result: Result<MealsDetail, Error>) in
+        NetworkManager.shared.loadMealData(from: url) { [weak self] (result: Result<MealsDetail, Error>) in
             switch result {
             case .success(let decodedResponse):
                 self?.meal = decodedResponse.meals.first
