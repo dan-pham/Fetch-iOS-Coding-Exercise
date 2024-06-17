@@ -40,7 +40,6 @@ struct MealDetailView: View {
             } else {
                 ProgressView()
                     .padding(.top, 200)
-                    .frame(maxWidth: .infinity)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

@@ -19,8 +19,8 @@ final class MealDetailViewModel {
         
         NetworkManager.shared.loadMealData(from: url) { [weak self] (result: Result<MealsDetail, Error>) in
             switch result {
-            case .success(let decodedResponse):
-                self?.meal = decodedResponse.meals.first
+            case .success(let response):
+                self?.meal = response.meals.first
                 
             case .failure(let error):
                 self?.errorMessage = error.localizedDescription
