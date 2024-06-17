@@ -21,8 +21,9 @@ struct MealDetailView: View {
         ScrollView {
             if let meal = viewModel.meal {
                 VStack(alignment: .leading) {
-                    Color.gray
+                    MealThumbnailImage(url: meal.thumbnailURL)
                         .frame(height: 300)
+                        .clipped()
                     
                     VStack(alignment: .leading) {
                         Text(meal.title)

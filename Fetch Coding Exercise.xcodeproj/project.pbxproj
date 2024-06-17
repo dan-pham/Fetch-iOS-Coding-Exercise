@@ -10,6 +10,7 @@
 		C30EB3652C20C7B200E0EA7D /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB3642C20C7B200E0EA7D /* MealDetailView.swift */; };
 		C30EB3672C20CC8F00E0EA7D /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB3662C20CC8F00E0EA7D /* MealDetailViewModel.swift */; };
 		C30EB3692C20CCCD00E0EA7D /* MealDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB3682C20CCCD00E0EA7D /* MealDetail.swift */; };
+		C30EB36B2C20D48100E0EA7D /* MealThumbnailImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB36A2C20D48100E0EA7D /* MealThumbnailImage.swift */; };
 		C35580182C191080008F3B31 /* MealListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35580172C191080008F3B31 /* MealListCellView.swift */; };
 		C355801A2C191558008F3B31 /* MealsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35580192C191558008F3B31 /* MealsListViewModel.swift */; };
 		C355801C2C191734008F3B31 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355801B2C191734008F3B31 /* Meal.swift */; };
@@ -24,6 +25,7 @@
 		C30EB3642C20C7B200E0EA7D /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		C30EB3662C20CC8F00E0EA7D /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
 		C30EB3682C20CCCD00E0EA7D /* MealDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetail.swift; sourceTree = "<group>"; };
+		C30EB36A2C20D48100E0EA7D /* MealThumbnailImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealThumbnailImage.swift; sourceTree = "<group>"; };
 		C35580172C191080008F3B31 /* MealListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MealListCellView.swift; path = ../../MealListCellView.swift; sourceTree = "<group>"; };
 		C35580192C191558008F3B31 /* MealsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsListViewModel.swift; sourceTree = "<group>"; };
 		C355801B2C191734008F3B31 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				C35580172C191080008F3B31 /* MealListCellView.swift */,
+				C30EB36A2C20D48100E0EA7D /* MealThumbnailImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				C355801E2C1917F6008F3B31 /* NetworkManager.swift in Sources */,
 				C355801C2C191734008F3B31 /* Meal.swift in Sources */,
 				C30EB3672C20CC8F00E0EA7D /* MealDetailViewModel.swift in Sources */,
+				C30EB36B2C20D48100E0EA7D /* MealThumbnailImage.swift in Sources */,
 				C30EB3692C20CCCD00E0EA7D /* MealDetail.swift in Sources */,
 				C35580182C191080008F3B31 /* MealListCellView.swift in Sources */,
 				C355801A2C191558008F3B31 /* MealsListViewModel.swift in Sources */,

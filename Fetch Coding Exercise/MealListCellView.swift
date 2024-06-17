@@ -13,7 +13,7 @@ struct MealListCellView: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            Color.secondary
+            MealThumbnailImage(url: meal.thumbnailURL)
                 .frame(width: 64, height: 64)
                 .cornerRadius(12)
             
