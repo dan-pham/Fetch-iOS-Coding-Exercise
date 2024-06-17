@@ -12,6 +12,7 @@ import Observation
 final class MealsListViewModel {
     private(set) var meals: [Meal] = []
     private(set) var errorMessage = ""
+    var showingAlert = false
     
     private let url = URL(string: NetworkManager.TheMealDBEndpoints.dessertCategory.rawValue)
     
@@ -23,6 +24,7 @@ final class MealsListViewModel {
                 
             case .failure(let error):
                 self?.errorMessage = error.localizedDescription
+                self?.showingAlert = true
             }
         }
     }

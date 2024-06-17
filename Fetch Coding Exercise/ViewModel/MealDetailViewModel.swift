@@ -12,6 +12,7 @@ import Observation
 final class MealDetailViewModel {
     private(set) var meal: MealDetail? = nil
     private(set) var errorMessage = ""
+    var showingAlert = false
     
     func loadMealDetailData(for id: String) async {
         let url = URL(string: NetworkManager.TheMealDBEndpoints.fetchMealDetail.rawValue + id)
@@ -23,6 +24,7 @@ final class MealDetailViewModel {
                 
             case .failure(let error):
                 self?.errorMessage = error.localizedDescription
+                self?.showingAlert = true
             }
         }
     }

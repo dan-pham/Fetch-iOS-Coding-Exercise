@@ -47,6 +47,9 @@ struct MealDetailView: View {
         .task {
             await viewModel.loadMealDetailData(for: mealID)
         }
+        .alert(viewModel.errorMessage, isPresented: $viewModel.showingAlert) {
+            Button("OK", role: .cancel) { }
+        }
     }
 }
 

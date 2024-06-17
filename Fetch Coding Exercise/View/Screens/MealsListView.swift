@@ -31,6 +31,9 @@ struct MealsListView: View {
         .task {
             await viewModel.loadMealsData()
         }
+        .alert(viewModel.errorMessage, isPresented: $viewModel.showingAlert) {
+            Button("OK", role: .cancel) { }
+        }
     }
 }
 
