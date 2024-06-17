@@ -11,7 +11,7 @@ struct Meals: Decodable {
     var meals: [Meal]
 }
 
-struct Meal: Identifiable {
+struct Meal: Identifiable, Hashable {
     var id: String
     var title: String
     var thumbnailURL: String
