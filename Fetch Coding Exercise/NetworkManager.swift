@@ -21,14 +21,14 @@ class NetworkManager {
         case invalidURL = "The URL is not valid"
     }
     
-    func loadMealData<T: Decodable>(from url: URL?, completion: @escaping (Result<T, Error>) -> Void) {
+    func loadMealData<T: Decodable>(from url: URL?, session: URLSession = .shared, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = url else {
             return completion(.failure(URLError.invalidURL))
         }
         
         Task {
             do {
-                let (data, _) = try await URLSession.shared.data(from: url)
+                let (data, _) = try await session.data(from: url)
                 let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedResponse))
             } catch {
